@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Kantipur - Valentine Menu</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="css/templatemo-style.css" />
+    <link
+    href="https://fonts.googleapis.com/css?family=Spectral:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
+    rel="stylesheet"
+  />
+    <link rel="stylesheet" href="css/fullMenu.css" />
+  </head>
+  <body>
+    <section class="">
+        <div class="header">
+            <div class="container">
+              <a href="#" class="navbar-brand scroll-top">Kantipur</a>
+              <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                  <button
+                    type="button"
+                    id="nav-toggle"
+                    class="navbar-toggle"
+                    data-toggle="collapse"
+                    data-target="#main-nav"
+                  >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div>
+                <!--/.navbar-header-->
+                <div id="main-nav" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Recommended Dishes</a></li>
+                    <li><a href="fullMenu.html">Our Menus</a></li>
+                    <li><a href="blog.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                  </ul>
+                </div>
+                <!--/.navbar-collapse-->
+              </nav>
+              <!--/.navbar-->
+            </div>
+            <!--/.container-->
+          </div>
+          <!--/.header-->
+
+    </section>
+      <section id="popular" class="module">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <div
+              class="module-header wow fadeInUp animated"
+              style="visibility: visible; animation-name: fadeInUp;"
+            >
+            <img src="../img/valentine.gif"  alt="" style="width:700px;height:300px;" />
+            <a href="menu.html">
+              <h2 class="module-title"> Valentines' Menu</h2>
+            </a>
+              <h3 class="module-subtitle">
+                It is never too spicy. Chase the flavors of nature.
+              </h3>
+              <br>
+              <h4 id="nepali">10% discount <br>
+                7/Feb/2020 - 7/March/2020 !!! <br>
+                Opening Offer</h4>
+            </div>
+          </div>
+        </div>
+        <!-- .row -->
+
+        
+            <img id="myImg" src="../img/valentine.gif" alt="" style="width:150%;max-width:300px"> 
+            
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+              </div>
+
+
+        
+
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3 long-up text-center">
+                <a href="fullMenu.html" class="btn btn-custom-1">Our Menus <span class="top-arrow">&uarr;</span></a>
+              </div>
+            </div>
+            <!-- .row -->
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <div class="devider"></div>
+              </div>
+            </div>
+            <!-- .row -->
+
+      <!-- .container -->
+    </section>
+
+
+
+
+
+    <script data-cfasync="false" type="text/javascript" src="js/mail-sender.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        // navigation click actions 
+        $('.scroll-link').on('click', function(event){
+            event.preventDefault();
+            var sectionID = $(this).attr("data-id");
+            scrollToID('#' + sectionID, 750);
+        });
+        // scroll to top action
+        $('.scroll-top').on('click', function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop:0}, 'slow');         
+        });
+        // mobile nav toggle
+        $('#nav-toggle').on('click', function (event) {
+            event.preventDefault();
+            $('#main-nav').toggleClass("open");
+        });
+    });
+    // scroll function
+    function scrollToID(id, speed){
+        var offSet = 0;
+        var targetOffset = $(id).offset().top - offSet;
+        var mainNav = $('#main-nav');
+        $('html,body').animate({scrollTop:targetOffset}, speed);
+        if (mainNav.hasClass("open")) {
+            mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+            mainNav.removeClass("open");
+        }
+    }
+    if (typeof console === "undefined") {
+        console = {
+            log: function() { }
+        };
+    }
+    </script>
+    </body>
+</html>

@@ -1,0 +1,232 @@
+/* ========== Kantipur custom layer (non-destructive) ========== */
+:root{
+  --kp-brand:#2c0202;
+  --kp-accent:#ff9500;
+  --kp-ink:#222;
+  --kp-bg:#fff;
+
+  /* Accent used on hiring strip links */
+  --kp-accent-warm:#ffd166;
+  --kp-accent-warm-hover:#ffe08a;
+}
+
+/* ========== Base tweaks & utilities ========== */
+.tel-link,
+a.tel-link,
+a[href^="tel:"]{
+  color: var(--kp-accent-warm);
+  font-weight: 700;
+  text-decoration: none;
+}
+.tel-link:hover,
+a.tel-link:hover,
+a[href^="tel:"]:hover{
+  color: var(--kp-accent-warm-hover);
+  text-decoration: underline;
+}
+
+/* Ensure high-contrast links inside dark hiring strip */
+.hiring-strip a,
+.hiring-strip a:visited{
+  color: var(--kp-accent-warm) !important;
+  text-decoration: none;
+  font-weight: 700;
+}
+.hiring-strip a:hover,
+.hiring-strip a:focus{
+  color: var(--kp-accent-warm-hover) !important;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========== Hiring strip (between hero and content) ========== */
+.hiring-strip{
+  background:#111;
+  color:#fff;
+  padding:10px 0;
+  font-family:"Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  font-weight:500;
+
+  /* Base sizing – mobile first (intentionally bold) */
+  font-size:1.7rem;
+}
+
+/* Support both legacy `.inner` and new `.hiring-inner` wrappers */
+.hiring-strip .inner,
+.hiring-strip .hiring-inner{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 .75rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.75rem;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+/* Structured layout */
+.hiring-inner{ display:grid; gap:.35rem; }
+
+.hiring-line{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  align-items:baseline;
+  line-height:1.45;
+  font-size:1.5em;              /* headline line larger than base */
+}
+.hiring-line strong{ font-weight:800; letter-spacing:.01em; }
+.pref-note{ opacity:.9; font-style:normal; }
+
+/* Meta row (FR/NL + phones wrapper) */
+.hiring-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  align-items:center;
+  font-size:1rem;               /* keep readable without shrinking */
+  opacity:.95;
+}
+.hiring-meta .dot,
+.hiring-meta .slash{ opacity:.6; }
+
+/* Phones inside the strip — make them pop */
+.hiring-strip .tel{
+  color:var(--kp-accent-warm);
+  font-weight:800;
+  line-height:1.35;
+  font-size:1.28em;             /* bigger than meta/headline body on mobile */
+}
+.hiring-strip .tel:hover,
+.hiring-strip .tel:focus{
+  color:var(--kp-accent-warm-hover);
+  text-decoration:underline;
+  outline:none;
+}
+
+/* Legacy separator token (if used) */
+.hiring-strip .sep{ opacity:.6; }
+
+/* Mobile stack refinements */
+@media (max-width:640px){
+  .hiring-line{ gap:.35rem; }
+  .hiring-meta{ gap:.4rem; }
+  .hiring-meta .slash{ margin:0 .15rem; }
+}
+@media (max-width:560px){
+  .hiring-strip .inner{ gap:.5rem; }
+  .hiring-strip span,
+  .hiring-strip a{ display:inline-block; }
+}
+
+/* -------- Responsive size tuning -------- */
+
+/* ≥480px: slightly adjust but keep strong presence */
+@media (min-width:480px){
+  .hiring-strip{ font-size:1.65rem; }
+  .hiring-strip .tel{ font-size:1.32em; }
+}
+
+/* ≥768px: tablets / small laptops */
+@media (min-width:768px){
+  .hiring-strip{ font-size:1.55rem; }     /* balance with surrounding layout */
+  .hiring-strip .tel{ font-size:1.24em; }
+  .hiring-meta{ font-size:1.08rem; }
+}
+
+/* ≥1024px: desktops */
+@media (min-width:1024px){
+  .hiring-strip{ font-size:1.45rem; }
+  .hiring-strip .tel{ font-size:1.18em; }
+}
+
+/* ========== Optional sticky hiring banner (top) ========== */
+.hiring-banner{
+  position:sticky; top:0; z-index:2000;
+  background: linear-gradient(90deg, var(--kp-brand), #4a0a0a);
+  color:#fff;
+  font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  font-size:1.06rem;            /* slight lift */
+}
+.hiring-banner__inner{
+  max-width:1180px; margin:0 auto; padding:.65rem .75rem;
+  display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;
+}
+.hiring-badge{
+  flex:0 0 auto;
+  border:2px solid rgba(255,255,255,.6);
+  border-radius:999px; padding:.25rem .6rem; font-weight:700; letter-spacing:.02em;
+  background: rgba(255,255,255,.12);
+}
+.hiring-text{ flex:1 1 420px; line-height:1.45; }
+.hiring-text strong{ color:#ffe2b0; }
+.hiring-roles{ opacity:.95; }
+
+.hiring-actions{ display:flex; gap:.5rem; flex:0 0 auto; }
+.hiring-actions a{
+  display:inline-block; padding:.5rem .75rem; border-radius:10px;
+  text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,.35);
+  transition: transform .08s ease, background .2s ease;
+  background: rgba(255,255,255,.08); color:#fff;
+  font-size:1rem;
+}
+.hiring-actions a:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.18);
+}
+
+/* Phone buttons inside the banner */
+.hiring-actions a[href^="tel:"]{
+  border-color: rgba(255,209,102,.6);
+  background: rgba(255,209,102,.14);
+  color: var(--kp-accent-warm);
+}
+.hiring-actions a[href^="tel:"]:hover{
+  background: rgba(255,209,102,.22);
+  color: var(--kp-accent-warm-hover);
+}
+
+.hiring-dismiss{
+  appearance:none; border:0; background:transparent; color:#fff;
+  padding:.25rem; margin-left:auto; cursor:pointer;
+}
+.hiring-dismiss:focus{ outline:2px solid #fff; outline-offset:2px; }
+
+@media (max-width:560px){
+  .hiring-text{ font-size:.92rem; }
+  .hiring-actions a{ padding:.45rem .55rem; font-size:.9rem; }
+  .hiring-badge{ display:none; }
+}
+
+.hiring-banner.is-hidden{ display:none !important; }
+
+/* ========== Multi-line contact snippet (optional stacked phones) ========== */
+.contact-multiline{
+  display:inline-block;
+  line-height:1.35;
+  color:#fff;                 /* adjust if used on light bg */
+}
+.contact-multiline a{
+  display:block;              /* each phone on its own line */
+  font-weight:700;
+  text-decoration:none;
+  color:var(--kp-accent-warm);
+}
+.contact-multiline a:hover,
+.contact-multiline a:focus{
+  text-decoration:underline;
+  color:var(--kp-accent-warm-hover);
+}
+
